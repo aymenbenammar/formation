@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/formateur")
+@RequestMapping("/formation")
 public class FormationController {
     @Autowired
     FormationServiceImpl formationService;
