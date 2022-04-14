@@ -2,7 +2,6 @@ package com.sb.formation.service;
 
 import com.sb.formation.entities.Utilisateur;
 import com.sb.formation.reponses.MessageResponse;
-import com.sb.formation.repository.ProfilRepository;
 import com.sb.formation.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,7 @@ public class UtilisateurServiceImpl implements UtilisateurService{
     @Transactional
     @Override
     public MessageResponse save(Utilisateur utilisateur){
-        boolean exist =utilisateurRepository.existsByLogin(utilisateur.getLogin());
+        boolean exist =utilisateurRepository.existsByUsername(utilisateur.getUsername());
         if (exist){
             return new MessageResponse(false,"Echec !","Cet utilisateur existe déja ! ");
         }
@@ -27,7 +26,7 @@ public class UtilisateurServiceImpl implements UtilisateurService{
     @Transactional
     @Override
     public MessageResponse update(Utilisateur utilisateur){
-        boolean exist =utilisateurRepository.existsByLogin(utilisateur.getLogin());
+        boolean exist =utilisateurRepository.existsByUsername(utilisateur.getUsername());
         if (!exist){
             return new MessageResponse(false,"Echec !","Cet utilisateur n'existe pas ! ");
         }
